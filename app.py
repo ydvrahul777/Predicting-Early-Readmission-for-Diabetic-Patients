@@ -20,8 +20,10 @@ def main():
     st.title('Early Readmission Prediction for Diabetic Patients')
     st.subheader('This application predicts whether a diabetic patient is at high risk of early hospital readmission.')
     
-    # Display hospital image
-    st.image('hospital.png', caption='Hospital Readmission Prediction', use_container_width=True)
+    # Load and resize hospital image
+    hospital_image = Image.open('hospital.png')
+    hospital_image = hospital_image.resize((700, 400))  # Adjust width and height as needed
+    st.image(hospital_image, caption='Hospital Readmission Prediction')
     
     st.markdown('### Input Patient Data')
     st.markdown('Please enter the following details to get a prediction:')
@@ -71,8 +73,10 @@ def main():
     st.markdown('**Discharge Destination Code:** Numerical code representing discharge destination')
     discharged_to = st.number_input('Enter Discharge Destination Code', min_value=1.0, max_value=30.0)
     
-    # Display medical infographic
-    st.image('diabetes_info.png', caption='Diabetes and Readmission Factors', use_container_width=True)
+    # Load and resize medical infographic
+    diabetes_image = Image.open('diabetes_info.png')
+    diabetes_image = diabetes_image.resize((700, 400))  # Adjust width and height as needed
+    st.image(diabetes_image, caption='Diabetes and Readmission Factors')
     
     input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
                    num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
