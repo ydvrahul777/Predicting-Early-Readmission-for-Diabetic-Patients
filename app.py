@@ -25,11 +25,15 @@ def main():
     col1, col2 = st.columns([1, 1])
     
     with col2:
+        st.markdown('### 📢 Importance of Early Readmission Prediction')
+        st.markdown('Predicting early readmission is crucial in improving patient outcomes and reducing healthcare costs. By identifying high-risk patients, hospitals can implement preventive measures, offer tailored post-discharge plans, and enhance overall efficiency.')
+        
+        st.markdown('Early hospital readmission can indicate gaps in post-discharge care and patient monitoring. By leveraging data-driven predictions, healthcare systems can improve patient management strategies, reduce unnecessary re-hospitalizations, and ensure continuity of care. Effective prediction models assist in better resource allocation, reducing patient burden and financial strain on both hospitals and individuals.')
+        
         # Load and resize hospital image
         hospital_image = Image.open('hospital.png').resize((800, 500))
         st.image(hospital_image, caption='Hospital Readmission Prediction')
-        
-        
+
         st.markdown('---')
         st.markdown('### 📢 How This Helps')
         st.markdown('**For Patients:** This model helps in identifying individuals who are at higher risk of early readmission, ensuring timely interventions and better healthcare management.')
