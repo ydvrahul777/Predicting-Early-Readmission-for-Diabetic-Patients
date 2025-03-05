@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -19,6 +18,9 @@ def prediction(input_data):
 def main():
     st.title('Early Readmission Prediction for Diabetic Patients')
     st.subheader('This application predicts whether a diabetic patient is at high risk of early hospital readmission.')
+    
+    # Add an image at the top
+    st.image('hospital.jpg', caption='Hospital Readmission Prediction', use_column_width=True)
     
     st.markdown('### Input Patient Data')
     st.markdown('Please enter the following details to get a prediction:')
@@ -67,6 +69,9 @@ def main():
     
     st.markdown('**Discharge Destination Code:** Numerical code representing discharge destination')
     discharged_to = st.number_input('Enter Discharge Destination Code', min_value=1.0, max_value=30.0)
+    
+    # Add an image related to medical prediction
+    st.image('diabetes_info.png', caption='Diabetes and Readmission Factors', use_column_width=True)
     
     input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
                    num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
