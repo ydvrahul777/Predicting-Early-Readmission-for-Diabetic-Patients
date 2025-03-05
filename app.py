@@ -20,7 +20,7 @@ def main():
     st.set_page_config(page_title='Diabetes Readmission Prediction', layout='wide')
     
     st.title('🏥 Early Readmission Prediction for Diabetic Patients')
-    st.markdown('This application predicts whether a diabetic patient is at high risk of early hospital readmission.')
+    st.markdown('This application predicts whether a diabetic patient is at high risk of early hospital readmission, helping healthcare providers make informed decisions.')
     
     # Load and resize hospital image
     hospital_image = Image.open('hospital.png').resize((600, 350))
@@ -44,6 +44,9 @@ def main():
     diabetesMed = st.sidebar.selectbox('Diabetes Medication (0 - No, 1 - Yes)', [0.0, 1.0])
     discharged_to = st.sidebar.number_input('Discharge Destination Code', min_value=1.0, max_value=30.0)
     
+    # Load and resize medical infographic
+    diabetes_image = Image.open('diabetes_info.png').resize((600, 350))
+    st.image(diabetes_image, caption='📊 Diabetes and Readmission Factors')
     
     input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
                    num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
@@ -53,6 +56,11 @@ def main():
         with st.spinner('Processing...'):
             response = prediction(input_list)
             st.success(f'🔍 Prediction Result: **{response}**')
+    
+    st.markdown('---')
+    st.markdown('### 📢 How This Helps')
+    st.markdown('**For Patients:** This model helps in identifying individuals who are at higher risk of early readmission, ensuring timely interventions and better healthcare management.')
+    st.markdown('**For Hospitals:** By predicting readmissions, hospitals can optimize resource allocation, improve patient care, and reduce unnecessary hospital stays, ultimately enhancing efficiency and cost savings.')
     
     st.markdown('---')
     st.markdown('### 📢 About this App')
