@@ -26,7 +26,7 @@ def main():
     
     with col2:
         # Load and resize hospital image
-        hospital_image = Image.open('hospital.png').resize((600, 350))
+        hospital_image = Image.open('hospital.png').resize((600, 400))
         st.image(hospital_image, caption='Hospital Readmission Prediction')
         
         
