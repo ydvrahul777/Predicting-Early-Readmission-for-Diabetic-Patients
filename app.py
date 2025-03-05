@@ -32,6 +32,15 @@ def main():
         # Load and resize medical infographic
         diabetes_image = Image.open('diabetes_info.png').resize((600, 350))
         st.image(diabetes_image, caption='📊 Diabetes and Readmission Factors')
+        
+        st.markdown('---')
+        st.markdown('### 📢 How This Helps')
+        st.markdown('**For Patients:** This model helps in identifying individuals who are at higher risk of early readmission, ensuring timely interventions and better healthcare management.')
+        st.markdown('**For Hospitals:** By predicting readmissions, hospitals can optimize resource allocation, improve patient care, and reduce unnecessary hospital stays, ultimately enhancing efficiency and cost savings.')
+        
+        st.markdown('---')
+        st.markdown('### 📢 About this App')
+        st.markdown('This app is designed to assist healthcare providers in identifying diabetic patients at risk of early readmission. The prediction is based on patient demographics, medical history, and admission details.')
     
     with col2:
         st.header('Patient Information')
@@ -54,20 +63,12 @@ def main():
         input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
                        num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
                        insulin, change, diabetesMed, discharged_to]]
-    
-    if st.button('🚀 Predict', use_container_width=True):
-        with st.spinner('Processing...'):
-            response = prediction(input_list)
-            st.success(f'🔍 Prediction Result: **{response}**')
-    
-    st.markdown('---')
-    st.markdown('### 📢 How This Helps')
-    st.markdown('**For Patients:** This model helps in identifying individuals who are at higher risk of early readmission, ensuring timely interventions and better healthcare management.')
-    st.markdown('**For Hospitals:** By predicting readmissions, hospitals can optimize resource allocation, improve patient care, and reduce unnecessary hospital stays, ultimately enhancing efficiency and cost savings.')
-    
-    st.markdown('---')
-    st.markdown('### 📢 About this App')
-    st.markdown('This app is designed to assist healthcare providers in identifying diabetic patients at risk of early readmission. The prediction is based on patient demographics, medical history, and admission details.')
+        
+        st.markdown("### 🏥 Prediction")
+        if st.button('🚀 Predict', use_container_width=True):
+            with st.spinner('Processing...'):
+                response = prediction(input_list)
+                st.success(f'🔍 Prediction Result: **{response}**')
     
 if __name__ == '__main__':
     main()
