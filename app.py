@@ -54,11 +54,11 @@ def main():
         input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
                        num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
                        insulin, change, diabetesMed, discharged_to]]
-        
-        if st.button('🚀 Predict'):
-            with st.spinner('Processing...'):
-                response = prediction(input_list)
-                st.success(f'🔍 Prediction Result: **{response}**')
+    
+    if st.button('🚀 Predict', use_container_width=True):
+        with st.spinner('Processing...'):
+            response = prediction(input_list)
+            st.success(f'🔍 Prediction Result: **{response}**')
     
     st.markdown('---')
     st.markdown('### 📢 How This Helps')
