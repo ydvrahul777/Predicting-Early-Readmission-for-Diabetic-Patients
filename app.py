@@ -73,10 +73,6 @@ def main():
     st.markdown('**Discharge Destination Code:** Numerical code representing discharge destination')
     discharged_to = st.number_input('Enter Discharge Destination Code', min_value=1.0, max_value=30.0)
     
-    # Load and resize medical infographic
-    diabetes_image = Image.open('diabetes_info.png')
-    diabetes_image = diabetes_image.resize((700, 500))  
-    st.image(diabetes_image, caption='Diabetes and Readmission Factors')
     
     input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
                    num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
