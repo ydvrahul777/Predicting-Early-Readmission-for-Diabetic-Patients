@@ -22,7 +22,7 @@ def main():
     
     # Load and resize hospital image
     hospital_image = Image.open('hospital.png')
-    hospital_image = hospital_image.resize((700, 400))  # Adjust width and height as needed
+    hospital_image = hospital_image.resize((700, 500)) 
     st.image(hospital_image, caption='Hospital Readmission Prediction')
     
     st.markdown('### Input Patient Data')
@@ -75,7 +75,7 @@ def main():
     
     # Load and resize medical infographic
     diabetes_image = Image.open('diabetes_info.png')
-    diabetes_image = diabetes_image.resize((700, 400))  # Adjust width and height as needed
+    diabetes_image = diabetes_image.resize((700, 500))  
     st.image(diabetes_image, caption='Diabetes and Readmission Factors')
     
     input_list = [[gender, age, admission_type_id, time_in_hospital, num_lab_procedures,
