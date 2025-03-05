@@ -24,14 +24,11 @@ def main():
     
     col1, col2 = st.columns([1, 1])
     
-    with col1:
+    with col2:
         # Load and resize hospital image
         hospital_image = Image.open('hospital.png').resize((600, 350))
         st.image(hospital_image, caption='Hospital Readmission Prediction')
         
-        # Load and resize medical infographic
-        diabetes_image = Image.open('diabetes_info.png').resize((600, 350))
-        st.image(diabetes_image, caption='📊 Diabetes and Readmission Factors')
         
         st.markdown('---')
         st.markdown('### 📢 How This Helps')
@@ -42,7 +39,7 @@ def main():
         st.markdown('### 📢 About this App')
         st.markdown('This app is designed to assist healthcare providers in identifying diabetic patients at risk of early readmission. The prediction is based on patient demographics, medical history, and admission details.')
     
-    with col2:
+    with col1:
         st.header('Patient Information')
         gender = st.selectbox('Gender (0 - Male, 1 - Female)', [0.0, 1.0])
         age = st.number_input('Age Group (1: 0-10, ..., 10: 90-100)', min_value=1.0, max_value=10.0)
