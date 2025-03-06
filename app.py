@@ -45,8 +45,8 @@ def main():
     
     with col1:
         st.header('Patient Information')
-        gender = st.checkbox('Male')
-        gender_value = 0 if gender else 1
+        gender = st.radio('Select Gender:', ['Male', 'Female'])
+        gender_value = 0 if gender == 'Male' else 1
         
         age = int(st.number_input('Age Group (1: 0-10, ..., 10: 90-100)', min_value=1, max_value=10))
         admission_type_id = int(st.selectbox('Admission Type (1 - Emergency, 2 - Urgent, etc.)', [1, 2, 3, 4, 5, 6, 7, 8]))
