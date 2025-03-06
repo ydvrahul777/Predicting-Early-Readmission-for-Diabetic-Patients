@@ -81,15 +81,24 @@ def main():
         diag_1 = int(st.number_input('Primary Diagnosis Code'))
         diag_2 = int(st.number_input('Secondary Diagnosis Code'))
         diag_3 = int(st.number_input('Additional Diagnosis Code'))
-        metformin = int(st.selectbox('Metformin Use (0 - No, 1 - Yes)', [0, 1]))
-        insulin = int(st.selectbox('Insulin Use (1 - No, 2 - Up, 3 - Steady)', [1, 2, 3]))
-        change = int(st.selectbox('Change in Medications (0 - No, 1 - Yes)', [0, 1]))
-        diabetesMed = int(st.selectbox('Diabetes Medication (0 - No, 1 - Yes)', [0, 1]))
+        
+        metformin = st.radio('Metformin Use:', ['No', 'Yes'])
+        metformin_value = 0 if metformin == 'No' else 1
+        
+        insulin = st.radio('Insulin Use:', ['No', 'Up', 'Steady'])
+        insulin_value = {'No': 1, 'Up': 2, 'Steady': 3}[insulin]
+        
+        change = st.radio('Change in Medications:', ['No', 'Yes'])
+        change_value = 0 if change == 'No' else 1
+        
+        diabetesMed = st.radio('Diabetes Medication:', ['No', 'Yes'])
+        diabetesMed_value = 0 if diabetesMed == 'No' else 1
+        
         discharged_to = int(st.number_input('Discharge Destination Code', min_value=1, max_value=30))
         
         input_list = [[gender_value, age_category, admission_type_id, time_in_hospital, num_lab_procedures,
-                       num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
-                       insulin, change, diabetesMed, discharged_to]]
+                       num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin_value,
+                       insulin_value, change_value, diabetesMed_value, discharged_to]]
         
         st.markdown("### 🏥 Prediction")
         if st.button('🚀 Predict', use_container_width=True):
