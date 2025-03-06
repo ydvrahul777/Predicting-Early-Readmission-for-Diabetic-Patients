@@ -80,20 +80,20 @@ def main():
         diag_2 = int(st.number_input('Secondary Diagnosis Code', key='diag2'))
         diag_3 = int(st.number_input('Additional Diagnosis Code', key='diag3'))
         
-        st.markdown('**Metformin:**')
-        metformin = st.radio('Select Metformin', ['No', 'Yes'], horizontal=True, key='metformin')
+        st.markdown('**Metformin:  **', help='(Select Metformin)')
+        metformin = st.radio('', ['No', 'Yes'], horizontal=True, key='metformin')
         metformin = 0 if metformin == 'No' else 1
         
-        st.markdown('**Insulin:**')
-        insulin = st.radio('Select Insulin Usage', ['No', 'Up', 'Steady', 'Down'], horizontal=True, key='insulin')
+        st.markdown('**Insulin:  **', help='(Select Insulin Usage)')
+        insulin = st.radio('', ['No', 'Up', 'Steady', 'Down'], horizontal=True, key='insulin')
         insulin = {'No': 1, 'Up': 2, 'Steady': 3, 'Down': 4}[insulin]
         
-        st.markdown('**Change:**')
-        change = st.radio('Change in Medications', ['No', 'Yes'], horizontal=True, key='change')
+        st.markdown('**Change:  **', help='(Change in Medications)')
+        change = st.radio('', ['No', 'Yes'], horizontal=True, key='change')
         change = 0 if change == 'No' else 1
         
-        st.markdown('**Diabetes Med:**')
-        diabetesMed = st.radio('Diabetes Medication', ['No', 'Yes'], horizontal=True, key='diabetesMed')
+        st.markdown('**Diabetes Med:  **', help='(Diabetes Medication)')
+        diabetesMed = st.radio('', ['No', 'Yes'], horizontal=True, key='diabetesMed')
         diabetesMed = 0 if diabetesMed == 'No' else 1
         
         discharged_to = int(st.number_input('Discharge Destination Code', min_value=1, max_value=30, key='discharge'))
