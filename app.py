@@ -67,7 +67,7 @@ def main():
         gender = st.radio('**Select Gender:**', ['Male', 'Female'], horizontal=True, key='gender')
         gender = 0 if gender == 'Male' else 1
         
-        age = int(st.number_input('Enter Age:', min_value=0, max_value=120, key='age'))
+        age = int(st.number_input('**Enter Age:**', min_value=0, max_value=120, key='age'))
         age_category = categorize_age(age)
         
         admission_type_id = int(st.selectbox('**Admission Type**', [1, 2, 3, 4, 5, 6, 7, 8], key='admission'))
