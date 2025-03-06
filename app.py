@@ -80,7 +80,7 @@ def main():
         diag_2 = int(st.number_input('Secondary Diagnosis Code', key='diag2'))
         diag_3 = int(st.number_input('Additional Diagnosis Code', key='diag3'))
         
-        st.markdown("**Metformin:**")
+        # st.markdown("**Metformin:**")
         metformin = st.radio('Select Metformin', ['No', 'Yes'], horizontal=True, key='metformin')
         metformin = 0 if metformin == 'No' else 1
         
