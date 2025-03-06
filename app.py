@@ -68,10 +68,9 @@ def main():
     with col1:
         st.header('Patient Information')
         
-        gender = st.columns(2)
-        with gender[0]:
-            gender_value = st.radio('Gender:', ['Male', 'Female'], horizontal=True)
-            gender_value = 0 if gender_value == 'Male' else 1
+        st.markdown('**Gender:**')
+        gender_value = st.radio('', ['Male', 'Female'], horizontal=True)
+        gender_value = 0 if gender_value == 'Male' else 1
         
         age = int(st.number_input('Enter Age:', min_value=0, max_value=120))
         age_category = categorize_age(age)
@@ -85,19 +84,21 @@ def main():
         diag_2 = int(st.number_input('Secondary Diagnosis Code'))
         diag_3 = int(st.number_input('Additional Diagnosis Code'))
         
-        meds_row = st.columns(4)
-        with meds_row[0]:
-            metformin_value = st.radio('Metformin:', ['No', 'Yes'], horizontal=True)
-            metformin_value = 0 if metformin_value == 'No' else 1
-        with meds_row[1]:
-            insulin_value = st.radio('Insulin:', ['No', 'Up', 'Steady', 'Down'], horizontal=True)
-            insulin_value = {'No': 1, 'Up': 2, 'Steady': 3, 'Down': 4}[insulin_value]
-        with meds_row[2]:
-            change_value = st.radio('Change:', ['No', 'Yes'], horizontal=True)
-            change_value = 0 if change_value == 'No' else 1
-        with meds_row[3]:
-            diabetesMed_value = st.radio('Diabetes Med:', ['No', 'Yes'], horizontal=True)
-            diabetesMed_value = 0 if diabetesMed_value == 'No' else 1
+        st.markdown('**Metformin:**')
+        metformin_value = st.radio('', ['No', 'Yes'], horizontal=True)
+        metformin_value = 0 if metformin_value == 'No' else 1
+        
+        st.markdown('**Insulin:**')
+        insulin_value = st.radio('', ['No', 'Up', 'Steady', 'Down'], horizontal=True)
+        insulin_value = {'No': 1, 'Up': 2, 'Steady': 3, 'Down': 4}[insulin_value]
+        
+        st.markdown('**Change:**')
+        change_value = st.radio('', ['No', 'Yes'], horizontal=True)
+        change_value = 0 if change_value == 'No' else 1
+        
+        st.markdown('**Diabetes Med:**')
+        diabetesMed_value = st.radio('', ['No', 'Yes'], horizontal=True)
+        diabetesMed_value = 0 if diabetesMed_value == 'No' else 1
         
         discharged_to = int(st.number_input('Discharge Destination Code', min_value=1, max_value=30))
         
