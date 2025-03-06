@@ -5,16 +5,12 @@ import pickle
 from PIL import Image
 
 # Load the trained model
-with open('final_model.pkl','rb') as file:
+with open('final_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 def prediction(input_data):
     pred = model.predict(input_data)[0]
-    
-    if pred == 1:
-        return 'High Risk of Readmission'
-    else:
-        return 'Low Risk of Readmission'
+    return 'High Risk of Readmission' if pred == 1 else 'Low Risk of Readmission'
 
 def categorize_age(age):
     if age <= 10:
@@ -48,34 +44,27 @@ def main():
     
     with col2:
         st.markdown('### 📢 Importance of Early Readmission Prediction')
-        st.markdown('Predicting early readmission is crucial in improving patient outcomes and reducing healthcare costs. By identifying high-risk patients, hospitals can implement preventive measures, offer tailored post-discharge plans, and enhance overall efficiency.')
+        st.markdown('Predicting early readmission is crucial in improving patient outcomes and reducing healthcare costs.')
         
-        st.markdown('Early hospital readmission can indicate gaps in post-discharge care and patient monitoring. By leveraging data-driven predictions, healthcare systems can improve patient management strategies, reduce unnecessary re-hospitalizations, and ensure continuity of care. Effective prediction models assist in better resource allocation, reducing patient burden and financial strain on both hospitals and individuals.')
-        
-        # Load and resize hospital image
         hospital_image = Image.open('hospital.png').resize((800, 500))
         st.image(hospital_image, caption='Hospital Readmission Prediction')
 
         st.markdown('---')
         st.markdown('### 📢 How This Helps')
-        st.markdown('**For Patients:** This model helps in identifying individuals who are at higher risk of early readmission, ensuring timely interventions and better healthcare management.')
-        st.markdown('**For Hospitals:** By predicting readmissions, hospitals can optimize resource allocation, improve patient care, and reduce unnecessary hospital stays, ultimately enhancing efficiency and cost savings.')
+        st.markdown('**For Patients:** Identifies high-risk individuals for better healthcare management.')
+        st.markdown('**For Hospitals:** Optimizes resource allocation and improves efficiency.')
         
-        st.markdown('---')
-        st.markdown('### 📢 About this App')
-        st.markdown('This app is designed to assist healthcare providers in identifying diabetic patients at risk of early readmission. The prediction is based on patient demographics, medical history, and admission details.')
-    
     with col1:
         st.header('Patient Information')
         
         st.markdown('**Gender:**')
-        gender_value = st.radio('', ['Male', 'Female'], horizontal=True)
+        gender_value = st.radio('Select Gender', ['Male', 'Female'], horizontal=True, key='gender')
         gender_value = 0 if gender_value == 'Male' else 1
-        
+
         age = int(st.number_input('Enter Age:', min_value=0, max_value=120))
         age_category = categorize_age(age)
-        
-        admission_type_id = int(st.selectbox('Admission Type (1 - Emergency, 2 - Urgent, etc.)', [1, 2, 3, 4, 5, 6, 7, 8]))
+
+        admission_type_id = int(st.selectbox('Admission Type', [1, 2, 3, 4, 5, 6, 7, 8]))
         time_in_hospital = int(st.number_input('Time in Hospital (Days)', min_value=1, max_value=30))
         num_lab_procedures = int(st.number_input('Number of Lab Procedures', min_value=0))
         num_medications = int(st.number_input('Number of Medications', min_value=0))
@@ -84,22 +73,23 @@ def main():
         diag_2 = int(st.number_input('Secondary Diagnosis Code'))
         diag_3 = int(st.number_input('Additional Diagnosis Code'))
         
+        # Organizing buttons in rows while keeping variables in a column
         st.markdown('**Metformin:**')
-        metformin_value = st.radio('', ['No', 'Yes'], horizontal=True)
+        metformin_value = st.radio('Select Metformin', ['No', 'Yes'], horizontal=True, key='metformin')
         metformin_value = 0 if metformin_value == 'No' else 1
-        
+
         st.markdown('**Insulin:**')
-        insulin_value = st.radio('', ['No', 'Up', 'Steady', 'Down'], horizontal=True)
+        insulin_value = st.radio('Select Insulin Usage', ['No', 'Up', 'Steady', 'Down'], horizontal=True, key='insulin')
         insulin_value = {'No': 1, 'Up': 2, 'Steady': 3, 'Down': 4}[insulin_value]
-        
+
         st.markdown('**Change:**')
-        change_value = st.radio('', ['No', 'Yes'], horizontal=True)
+        change_value = st.radio('Change in Medications', ['No', 'Yes'], horizontal=True, key='change')
         change_value = 0 if change_value == 'No' else 1
-        
+
         st.markdown('**Diabetes Med:**')
-        diabetesMed_value = st.radio('', ['No', 'Yes'], horizontal=True)
+        diabetesMed_value = st.radio('Diabetes Medication', ['No', 'Yes'], horizontal=True, key='diabetesMed')
         diabetesMed_value = 0 if diabetesMed_value == 'No' else 1
-        
+
         discharged_to = int(st.number_input('Discharge Destination Code', min_value=1, max_value=30))
         
         input_list = [[gender_value, age_category, admission_type_id, time_in_hospital, num_lab_procedures,
