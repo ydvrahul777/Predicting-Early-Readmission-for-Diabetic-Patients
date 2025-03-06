@@ -16,6 +16,28 @@ def prediction(input_data):
     else:
         return 'Low Risk of Readmission'
 
+def categorize_age(age):
+    if age <= 10:
+        return 1
+    elif age <= 20:
+        return 2
+    elif age <= 30:
+        return 3
+    elif age <= 40:
+        return 4
+    elif age <= 50:
+        return 5
+    elif age <= 60:
+        return 6
+    elif age <= 70:
+        return 7
+    elif age <= 80:
+        return 8
+    elif age <= 90:
+        return 9
+    else:
+        return 10
+
 def main():
     st.set_page_config(page_title='Diabetes Readmission Prediction', layout='wide')
     
@@ -48,7 +70,9 @@ def main():
         gender = st.radio('Select Gender:', ['Male', 'Female'])
         gender_value = 0 if gender == 'Male' else 1
         
-        age = int(st.number_input('Age Group (1: 0-10, ..., 10: 90-100)', min_value=1, max_value=10))
+        age = int(st.number_input('Enter Age:', min_value=0, max_value=120))
+        age_category = categorize_age(age)
+        
         admission_type_id = int(st.selectbox('Admission Type (1 - Emergency, 2 - Urgent, etc.)', [1, 2, 3, 4, 5, 6, 7, 8]))
         time_in_hospital = int(st.number_input('Time in Hospital (Days)', min_value=1, max_value=30))
         num_lab_procedures = int(st.number_input('Number of Lab Procedures', min_value=0))
@@ -63,7 +87,7 @@ def main():
         diabetesMed = int(st.selectbox('Diabetes Medication (0 - No, 1 - Yes)', [0, 1]))
         discharged_to = int(st.number_input('Discharge Destination Code', min_value=1, max_value=30))
         
-        input_list = [[gender_value, age, admission_type_id, time_in_hospital, num_lab_procedures,
+        input_list = [[gender_value, age_category, admission_type_id, time_in_hospital, num_lab_procedures,
                        num_medications, number_inpatient, diag_1, diag_2, diag_3, metformin,
                        insulin, change, diabetesMed, discharged_to]]
         
