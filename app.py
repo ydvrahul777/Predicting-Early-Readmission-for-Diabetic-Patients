@@ -70,14 +70,14 @@ def main():
         age = int(st.number_input('Enter Age:', min_value=0, max_value=120, key='age'))
         age_category = categorize_age(age)
         
-        admission_type_id = int(st.selectbox('Admission Type', [1, 2, 3, 4, 5, 6, 7, 8], key='admission'))
-        time_in_hospital = int(st.number_input('Time in Hospital (Days)', min_value=1, max_value=30, key='hospital_time'))
-        num_lab_procedures = int(st.number_input('Number of Lab Procedures', min_value=0, key='lab_procedures'))
-        num_medications = int(st.number_input('Number of Medications', min_value=0, key='medications'))
-        number_inpatient = int(st.number_input('Number of Inpatient Visits', min_value=0, key='inpatient_visits'))
-        diag_1 = int(st.number_input('Primary Diagnosis Code', key='diag1'))
-        diag_2 = int(st.number_input('Secondary Diagnosis Code', key='diag2'))
-        diag_3 = int(st.number_input('Additional Diagnosis Code', key='diag3'))
+        admission_type_id = int(st.selectbox('**Admission Type**', [1, 2, 3, 4, 5, 6, 7, 8], key='admission'))
+        time_in_hospital = int(st.number_input('**Time in Hospital (Days)**', min_value=1, max_value=30, key='hospital_time'))
+        num_lab_procedures = int(st.number_input('**Number of Lab Procedures**', min_value=0, key='lab_procedures'))
+        num_medications = int(st.number_input('**Number of Medications**', min_value=0, key='medications'))
+        number_inpatient = int(st.number_input('**Number of Inpatient Visits**', min_value=0, key='inpatient_visits'))
+        diag_1 = int(st.number_input('**Primary Diagnosis Code**', key='diag1'))
+        diag_2 = int(st.number_input('**Secondary Diagnosis Code**', key='diag2'))
+        diag_3 = int(st.number_input('**Additional Diagnosis Code**', key='diag3'))
         
         metformin = st.radio('**Select Metformin:**', ['No', 'Yes'], horizontal=True, key='metformin')
         metformin = 0 if metformin == 'No' else 1
