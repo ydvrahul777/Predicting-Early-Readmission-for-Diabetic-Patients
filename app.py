@@ -64,8 +64,8 @@ def main():
     with col1:
         st.header('Patient Information')
         
-        st.markdown('**Gender:**')
-        gender = st.radio('Select Gender', ['Male', 'Female'], horizontal=True, key='gender')
+        # st.markdown('**Gender:**')
+        gender = st.radio('**Select Gender:**', ['Male', 'Female'], horizontal=True, key='gender')
         gender = 0 if gender == 'Male' else 1
         
         age = int(st.number_input('Enter Age:', min_value=0, max_value=120, key='age'))
