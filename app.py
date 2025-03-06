@@ -85,7 +85,7 @@ def main():
         diag_2 = int(st.number_input('Secondary Diagnosis Code'))
         diag_3 = int(st.number_input('Additional Diagnosis Code'))
         
-        meds_row = st.rows(4)
+        meds_row = st.columns(4)
         with meds_row[0]:
             metformin_value = st.radio('Metformin:', ['No', 'Yes'], horizontal=True)
             metformin_value = 0 if metformin_value == 'No' else 1
